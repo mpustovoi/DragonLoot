@@ -28,7 +28,7 @@ public abstract class PlayerEntityRendererMixin extends LivingEntityRenderer<Abs
     @Inject(method = "getArmPose", at = @At("HEAD"), cancellable = true)
     private static void getArmPoseMixin(AbstractClientPlayerEntity abstractClientPlayerEntity, Hand hand, CallbackInfoReturnable<BipedEntityModel.ArmPose> info) {
         ItemStack itemStack = abstractClientPlayerEntity.getStackInHand(hand);
-        if (!abstractClientPlayerEntity.handSwinging && itemStack.getItem() == ItemInit.DRAGON_CROSSBOW_ITEM && CrossbowItem.isCharged(itemStack)) {
+        if (!abstractClientPlayerEntity.handSwinging && itemStack.getItem() == ItemInit.DRAGON_CROSSBOW && CrossbowItem.isCharged(itemStack)) {
             info.setReturnValue(BipedEntityModel.ArmPose.CROSSBOW_HOLD);
         }
     }

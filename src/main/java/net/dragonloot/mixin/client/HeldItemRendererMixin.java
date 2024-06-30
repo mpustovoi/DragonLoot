@@ -13,7 +13,6 @@ import org.spongepowered.asm.mixin.injection.At;
 
 import net.fabricmc.api.Environment;
 import net.dragonloot.init.ItemInit;
-import net.dragonloot.item.DragonCrossbowItem;
 import net.fabricmc.api.EnvType;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -94,7 +93,7 @@ public class HeldItemRendererMixin {
     @Inject(method = "renderFirstPersonItem", at = @At(value = "HEAD"), cancellable = true)
     private void renderFirstPersonItemMixin(AbstractClientPlayerEntity player, float tickDelta, float pitch, Hand hand, float swingProgress, ItemStack item, float equipProgress, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo info) {
 
-        if (item.getItem() == ItemInit.DRAGON_CROSSBOW_ITEM) {
+        if (item.getItem() == ItemInit.DRAGON_CROSSBOW) {
             matrices.push();
 
             boolean bl = hand == Hand.MAIN_HAND;
@@ -112,8 +111,8 @@ public class HeldItemRendererMixin {
                 matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(-11.935F));
                 matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float) i * 65.3F));
                 matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees((float) i * -9.785F));
-                v = (float) item.getMaxUseTime() - ((float) this.client.player.getItemUseTimeLeft() - tickDelta + 1.0F);
-                w = v / (float) CrossbowItem.getPullTime(item);
+                v = (float) item.getMaxUseTime(player) - ((float) this.client.player.getItemUseTimeLeft() - tickDelta + 1.0F);
+                w = v / (float) CrossbowItem.getPullTime(item, player);
 
                 if (w > 1.0F) {
                     w = 1.0F;

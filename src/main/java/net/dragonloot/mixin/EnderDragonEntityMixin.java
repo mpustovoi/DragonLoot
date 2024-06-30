@@ -43,11 +43,11 @@ public abstract class EnderDragonEntityMixin extends MobEntity {
             }
 
             for (int i = 0; i < (ConfigInit.CONFIG.scale_minimum_drop_amount); i++) {
-                this.dropStack(new ItemStack(ItemInit.DRAGON_SCALE_ITEM));
+                this.dropStack(new ItemStack(ItemInit.DRAGON_SCALE));
             }
             for (int u = 0; u < dragonscalebonus; u++) {
                 if (this.getWorld().getRandom().nextFloat() <= ConfigInit.CONFIG.additional_scale_drop_chance) {
-                    this.dropStack(new ItemStack(ItemInit.DRAGON_SCALE_ITEM));
+                    this.dropStack(new ItemStack(ItemInit.DRAGON_SCALE));
                 }
 
             }

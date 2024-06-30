@@ -27,7 +27,7 @@ import net.minecraft.util.Identifier;
 @Environment(EnvType.CLIENT)
 @Mixin(ElytraFeatureRenderer.class)
 public abstract class ElytraFeatureRendererMixin<T extends LivingEntity, M extends EntityModel<T>> extends FeatureRenderer<T, M> {
-    private static final Identifier DRAGON_ELYTRA_TEXTURE = new Identifier("dragonloot:textures/entity/dragon_elytra.png");
+    private static final Identifier DRAGON_ELYTRA_TEXTURE = Identifier.of("dragonloot:textures/entity/dragon_elytra.png");
     private final DragonElytraEntityModel<T> dragonElytraModel = new DragonElytraEntityModel<>(DragonElytraEntityModel.getTexturedModelData().createModel());
 
     public ElytraFeatureRendererMixin(FeatureRendererContext<T, M> context) {
@@ -42,8 +42,8 @@ public abstract class ElytraFeatureRendererMixin<T extends LivingEntity, M exten
             matrixStack.translate(0.0D, 0.0D, 0.02D);
             this.getContextModel().copyStateTo(this.dragonElytraModel);
             this.dragonElytraModel.setAngles(livingEntity, f, g, j, k, l);
-            VertexConsumer vertexConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumerProvider, RenderLayer.getArmorCutoutNoCull(DRAGON_ELYTRA_TEXTURE), false, itemStack.hasGlint());
-            this.dragonElytraModel.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
+            VertexConsumer vertexConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumerProvider, RenderLayer.getArmorCutoutNoCull(DRAGON_ELYTRA_TEXTURE), false);
+            this.dragonElytraModel.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV);
             matrixStack.pop();
             info.cancel();
         }

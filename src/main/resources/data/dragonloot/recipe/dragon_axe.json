@@ -1,13 +1,13 @@
 {
   "type": "minecraft:smithing_transform",
   "base": {
-    "item": "minecraft:netherite_boots"
+    "item": "minecraft:netherite_axe"
   },
   "addition": {
     "item": "dragonloot:dragon_scale"
   },
   "result": {
-    "item": "dragonloot:dragon_boots"
+    "id": "dragonloot:dragon_axe"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

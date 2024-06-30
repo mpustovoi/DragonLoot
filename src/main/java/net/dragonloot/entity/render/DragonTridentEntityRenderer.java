@@ -31,7 +31,7 @@ public class DragonTridentEntityRenderer extends EntityRenderer<DragonTridentEnt
         matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(MathHelper.lerp(g, tridentEntity.prevYaw, tridentEntity.getYaw()) - 90.0F));
         matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(MathHelper.lerp(g, tridentEntity.prevPitch, tridentEntity.getPitch()) + 90.0F));
         VertexConsumer vertexConsumer = ItemRenderer.getDirectItemGlintConsumer(vertexConsumerProvider, this.model.getLayer(this.getTexture(tridentEntity)), false, tridentEntity.isEnchanted());
-        this.model.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV, 1.0F, 1.0F, 1.0F, 1.0F);
+        this.model.render(matrixStack, vertexConsumer, i, OverlayTexture.DEFAULT_UV);
         matrixStack.pop();
         super.render(tridentEntity, f, g, matrixStack, vertexConsumerProvider, i);
     }

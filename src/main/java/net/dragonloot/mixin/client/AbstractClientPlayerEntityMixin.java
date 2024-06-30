@@ -29,7 +29,7 @@ public abstract class AbstractClientPlayerEntityMixin extends PlayerEntity {
     @SuppressWarnings("resource")
     @Inject(method = "getFovMultiplier", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;getActiveItem()Lnet/minecraft/item/ItemStack;"), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
     private void getFovMultiplierMixin(CallbackInfoReturnable<Float> info, float f) {
-        if (this.isUsingItem() && this.getActiveItem().getItem().equals(ItemInit.DRAGON_BOW_ITEM)) {
+        if (this.isUsingItem() && this.getActiveItem().getItem().equals(ItemInit.DRAGON_BOW)) {
             int i = this.getItemUseTime();
             float g = (float) i / 20.0f;
             g = g > 1.0f ? 1.0f : (g *= g);

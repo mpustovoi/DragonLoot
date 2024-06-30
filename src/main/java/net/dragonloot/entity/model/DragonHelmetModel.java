@@ -31,10 +31,11 @@ public class DragonHelmetModel extends Model {
     }
 
     @Override
-    public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, float red, float green, float blue, float alpha) {
+    public void render(MatrixStack matrices, VertexConsumer vertexConsumer, int light, int overlay, int color) {
         this.HornLU.pitch = 0.7854F;
         this.HornRD.yaw = 0.3927F;
         this.HornLD.yaw = -0.3927F;
-        this.root.render(matrices, vertexConsumer, light, overlay, red, green, blue, alpha);
+        this.root.render(matrices, vertexConsumer, light, overlay, color);
     }
+
 }

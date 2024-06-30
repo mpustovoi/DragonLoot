@@ -1,13 +1,13 @@
 {
   "type": "minecraft:smithing_transform",
   "base": {
-    "item": "minecraft:netherite_sword"
+    "item": "minecraft:netherite_hoe"
   },
   "addition": {
     "item": "dragonloot:dragon_scale"
   },
   "result": {
-    "item": "dragonloot:dragon_sword"
+    "id": "dragonloot:dragon_hoe"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

@@ -16,7 +16,7 @@ public class DragonTridentItemRenderer {
         matrices.push();
         matrices.scale(1.0F, -1.0F, -1.0F);
         VertexConsumer vertexConsumer2 = ItemRenderer.getDirectItemGlintConsumer(vertexConsumers, modelTrident.getLayer(DragonLootMain.ID("textures/entity/dragon_trident.png")), false, stack.hasGlint());
-        modelTrident.render(matrices, vertexConsumer2, light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
+        modelTrident.render(matrices, vertexConsumer2, light, overlay);
         matrices.pop();
     }
 

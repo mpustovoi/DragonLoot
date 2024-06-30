@@ -2,7 +2,7 @@
     "parent": "minecraft:nether/netherite_armor",
     "display": {
         "icon": {
-            "item": "dragonloot:dragon_chestplate",
+            "id": "dragonloot:dragon_chestplate",
             "nbt": "{Damage:0}"
         },
         "title": {

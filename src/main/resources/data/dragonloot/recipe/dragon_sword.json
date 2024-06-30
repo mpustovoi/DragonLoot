@@ -1,13 +1,13 @@
 {
   "type": "minecraft:smithing_transform",
   "base": {
-    "item": "minecraft:anvil"
+    "item": "minecraft:netherite_sword"
   },
   "addition": {
     "item": "dragonloot:dragon_scale"
   },
   "result": {
-    "item": "dragonloot:dragon_anvil"
+    "id": "dragonloot:dragon_sword"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

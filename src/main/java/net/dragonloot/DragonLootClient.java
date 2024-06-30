@@ -14,7 +14,7 @@ public class DragonLootClient implements ClientModInitializer {
     public void onInitializeClient() {
         RenderInit.init();
         ModelProviderInit.init();
-        NetworkInit.init();
+        NetworkInit.clientInit();
     }
 
 }

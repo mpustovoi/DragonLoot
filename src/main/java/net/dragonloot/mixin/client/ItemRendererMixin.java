@@ -28,6 +28,7 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 @Environment(EnvType.CLIENT)
@@ -42,16 +43,16 @@ public abstract class ItemRendererMixin {
 
     @Inject(method = "renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V", at = @At(value = "HEAD"), cancellable = true)
     public void renderItem(ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay, BakedModel model, CallbackInfo ci) {
-        if (!stack.isEmpty() && stack.getItem() == ItemInit.DRAGON_TRIDENT_ITEM) {
+        if (!stack.isEmpty() && stack.getItem() == ItemInit.DRAGON_TRIDENT) {
             matrices.push();
             boolean bl = renderMode == ModelTransformationMode.GUI || renderMode == ModelTransformationMode.GROUND || renderMode == ModelTransformationMode.FIXED;
-            if (stack.getItem() == ItemInit.DRAGON_TRIDENT_ITEM && bl) {
-                model = ((ItemRendererAccess) this).getModelsInvoker().getModelManager().getModel(new ModelIdentifier("dragonloot", "dragon_trident", "inventory"));
+            if (stack.getItem() == ItemInit.DRAGON_TRIDENT && bl) {
+                model = ((ItemRendererAccess) this).getModelsInvoker().getModelManager().getModel(ModelIdentifier.ofInventoryVariant(Identifier.of("dragonloot", "dragon_trident")));
             }
 
             model.getTransformation().getTransformation(renderMode).apply(leftHanded, matrices);
             matrices.translate(-0.5D, -0.5D, -0.5D);
-            if (model.isBuiltin() || stack.getItem() == ItemInit.DRAGON_TRIDENT_ITEM && !bl) {
+            if (model.isBuiltin() || stack.getItem() == ItemInit.DRAGON_TRIDENT && !bl) {
                 DragonTridentItemRenderer.render(stack, renderMode, matrices, vertexConsumers, light, overlay);
             } else {
                 RenderLayer renderLayer = RenderLayers.getItemLayer(stack, true);
@@ -70,7 +71,7 @@ public abstract class ItemRendererMixin {
     public void getHeldItemModelMixin(ItemStack stack, @Nullable World world, @Nullable LivingEntity entity, int seed, CallbackInfoReturnable<BakedModel> info) {
         Item item = stack.getItem();
         BakedModel bakedModel2;
-        if (item == ItemInit.DRAGON_TRIDENT_ITEM) {
+        if (item == ItemInit.DRAGON_TRIDENT) {
             bakedModel2 = this.models.getModelManager().getModel(ItemRenderer.TRIDENT_IN_HAND);
             ClientWorld clientWorld = world instanceof ClientWorld ? (ClientWorld) world : null;
             BakedModel bakedModel3 = bakedModel2.getOverrides().apply(bakedModel2, stack, clientWorld, entity, seed);

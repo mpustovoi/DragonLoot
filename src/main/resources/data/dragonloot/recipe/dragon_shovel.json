@@ -1,13 +1,13 @@
 {
   "type": "minecraft:smithing_transform",
   "base": {
-    "item": "minecraft:netherite_leggings"
+    "item": "minecraft:netherite_shovel"
   },
   "addition": {
     "item": "dragonloot:dragon_scale"
   },
   "result": {
-    "item": "dragonloot:dragon_leggings"
+    "id": "dragonloot:dragon_shovel"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

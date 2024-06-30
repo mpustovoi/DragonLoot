@@ -6,20 +6,17 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import io.netty.buffer.Unpooled;
-
 import org.spongepowered.asm.mixin.injection.At;
 
 import net.dragonloot.access.DragonAnvilInterface;
 import net.dragonloot.init.BlockInit;
 import net.dragonloot.init.ConfigInit;
-import net.dragonloot.network.SyncPacket;
+import net.dragonloot.network.packet.AnvilPacket;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.AnvilScreenHandler;
 import net.minecraft.screen.ForgingScreenHandler;
 import net.minecraft.screen.Property;
@@ -42,10 +39,7 @@ public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler imple
     private void canUseMixin(BlockState state, CallbackInfoReturnable<Boolean> info) {
         if (state.isOf(BlockInit.DRAGON_ANVIL_BLOCK)) {
             isDragonAnvil = true;
-            PacketByteBuf data = new PacketByteBuf(Unpooled.buffer());
-            data.writeInt(player.getId());
-            data.writeString(state.getBlock().toString());
-            ServerPlayNetworking.send((ServerPlayerEntity) player, SyncPacket.ANVIL_SYNC_PACKET, data);
+            ServerPlayNetworking.send((ServerPlayerEntity) player, new AnvilPacket(player.getId(), state.getBlock().toString()));
         }
     }
 

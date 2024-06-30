@@ -7,7 +7,7 @@ import net.minecraft.util.Identifier;
 public class DragonLootMain implements ModInitializer {
 
     public static Identifier ID(String path) {
-        return new Identifier(MOD_ID, path);
+        return Identifier.of(MOD_ID, path);
     }
 
     private static final String MOD_ID = "dragonloot";
@@ -19,6 +19,7 @@ public class DragonLootMain implements ModInitializer {
         EntityInit.init();
         ItemInit.init();
         TagInit.init();
+        NetworkInit.serverInit();
     }
 
 }
