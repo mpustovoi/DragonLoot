@@ -10,7 +10,7 @@ import net.minecraft.registry.tag.TagKey;
 
 public class DragonToolMaterials implements ToolMaterial {
 
-    public static final ToolMaterial DRAGON = new DragonToolMaterials(BlockTags.INCORRECT_FOR_WOODEN_TOOL, ConfigInit.CONFIG.dragon_item_durability_multiplier, ConfigInit.CONFIG.dragon_item_mining_speed_multiplier, ConfigInit.CONFIG.dragon_item_base_damage, ConfigInit.CONFIG.dragon_tool_enchantability, Ingredient.ofItems(ItemInit.DRAGON_SCALE), "dragon");
+    public static final ToolMaterial DRAGON = new DragonToolMaterials(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, ConfigInit.CONFIG.dragon_item_durability, ConfigInit.CONFIG.dragon_item_mining_speed_multiplier, ConfigInit.CONFIG.dragon_item_base_damage, ConfigInit.CONFIG.dragon_tool_enchantability, Ingredient.ofItems(ItemInit.DRAGON_SCALE), "dragon");
 
     private final TagKey<Block> inverseTag;
     private final int itemDurability;

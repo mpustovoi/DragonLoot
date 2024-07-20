@@ -34,7 +34,7 @@ public class DragonLootConfig implements ConfigData {
     @ConfigEntry.Gui.RequiresRestart
     public int dragon_armor_durability_multiplier = 37;
     @ConfigEntry.Gui.RequiresRestart
-    public int dragon_item_durability_multiplier = 37;
+    public int dragon_item_durability = 1961;
     @ConfigEntry.Gui.RequiresRestart
     public float dragon_item_base_damage = 5F;
     @ConfigEntry.Gui.RequiresRestart

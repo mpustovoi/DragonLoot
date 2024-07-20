@@ -42,12 +42,14 @@ public class DragonTridentEntity extends PersistentProjectileEntity {
         super(EntityInit.DRAGON_TRIDENT_ENTITY, owner, world, stack, null);
         this.dataTracker.set(LOYALTY, this.getLoyalty(stack));
         this.dataTracker.set(ENCHANTED, stack.hasGlint());
+        this.tridentStack = stack;
     }
 
     public DragonTridentEntity(World world, double x, double y, double z, ItemStack stack) {
         super(EntityInit.DRAGON_TRIDENT_ENTITY, x, y, z, world, stack, stack);
         this.dataTracker.set(LOYALTY, this.getLoyalty(stack));
         this.dataTracker.set(ENCHANTED, stack.hasGlint());
+        this.tridentStack = stack;
     }
 
     @Override
@@ -104,12 +106,16 @@ public class DragonTridentEntity extends PersistentProjectileEntity {
 
     @Override
     protected ItemStack asItemStack() {
+        if (this.tridentStack == null || this.tridentStack.isEmpty()) {
+            System.out.println("TEST");
+            this.tridentStack = new ItemStack(ItemInit.DRAGON_TRIDENT);
+        }
         return this.tridentStack.copy();
     }
 
     @Environment(EnvType.CLIENT)
     public boolean isEnchanted() {
-        return (Boolean) this.dataTracker.get(ENCHANTED);
+        return this.dataTracker.get(ENCHANTED);
     }
 
     @Override

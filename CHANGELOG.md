@@ -1,6 +1,8 @@
 ### Added:
 - 
 ### Fixed:
-- 
+- Fixed dragon tool durability
+- Fixed trident crash
+- Fixed dragon items enchanting
 ### Changed:
-- Updated to mc 1.21
+- 
