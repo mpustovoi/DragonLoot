@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
-        "dragonloot:dragon_chestplate"
+        "dragonloot:dragon_chestplate",
+        "dragonloot:upgraded_dragon_chestplate"
     ]
 }
