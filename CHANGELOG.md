@@ -1,6 +1,6 @@
 ### Added:
 - 
 ### Fixed:
-- Fixed more tags
+- Fixed trident crash
 ### Changed:
 - 

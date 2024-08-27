@@ -16,6 +16,7 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.TridentItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
@@ -107,7 +108,6 @@ public class DragonTridentEntity extends PersistentProjectileEntity {
     @Override
     protected ItemStack asItemStack() {
         if (this.tridentStack == null || this.tridentStack.isEmpty()) {
-            System.out.println("TEST");
             this.tridentStack = new ItemStack(ItemInit.DRAGON_TRIDENT);
         }
         return this.tridentStack.copy();
@@ -202,6 +202,14 @@ public class DragonTridentEntity extends PersistentProjectileEntity {
     @Override
     protected ItemStack getDefaultItemStack() {
         return new ItemStack(ItemInit.DRAGON_TRIDENT);
+    }
+
+    @Override
+    public ItemStack getWeaponStack() {
+        if (this.tridentStack == null || this.tridentStack.isEmpty()) {
+            this.tridentStack = new ItemStack(ItemInit.DRAGON_TRIDENT);
+        }
+        return this.tridentStack.copy();
     }
 
     private byte getLoyalty(ItemStack stack) {
